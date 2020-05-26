@@ -10,7 +10,7 @@ function App() {
      */
     const filterData = audioBuffer => {
         const rawData = audioBuffer.getChannelData(0); // We only need to work with one channel of data
-        const samples = 300; // Number of samples we want to have in our final data set
+        const samples = 777; // Number of samples we want to have in our final data set
         const blockSize = Math.floor(rawData.length / samples); // the number of samples in each subdivision
         const filteredData = [];
         for (let i = 0; i < samples; i++) {
@@ -87,9 +87,11 @@ function App() {
     const theSecret = (data) => {
         const filteredData = [];
         const timePoints = [];
-        for (let i = 0; i < data.length; i += Math.floor(Math.random() * 5)) {
-            timePoints.push(i);
-            filteredData.push(data[i]);
+        for (let i = 3; i < data.length; i += 5) {
+            const index = i + Math.floor(Math.random() * 3) * (Math.random() < 0.5 ? -1 : 1);
+            console.log(i+Math.floor(Math.random() * 3));
+            timePoints.push(index);
+            filteredData.push(data[index]);
         }
         return {
             filteredData,
