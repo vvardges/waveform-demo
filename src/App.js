@@ -85,11 +85,12 @@ function App() {
     };
 
     const theSecret = (data) => {
-        const filteredData = [];
-        const timePoints = [];
-        for (let i = 3; i < data.length; i += 5) {
-            const index = i + Math.floor(Math.random() * 3) * (Math.random() < 0.5 ? -1 : 1);
-            console.log(i+Math.floor(Math.random() * 3));
+        const filteredData = [0];
+        const timePoints = [0];
+        const n = 20;
+        for (let i = Math.ceil(n/2); i < data.length; i += n) {
+            const index = i + Math.floor(Math.random() * Math.ceil(n/2)) * (Math.random() < 0.5 ? -1 : 1);
+            if(isNaN(index)) continue;
             timePoints.push(index);
             filteredData.push(data[index]);
         }
